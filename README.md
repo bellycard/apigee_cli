@@ -11,6 +11,7 @@ Add this line to your application's Gemfile:
 And then execute:
 
     $ bundle
+    $ npm install -g apigeetool # this makes use of the apigeetool JS library
 
 Or install it yourself as:
 
