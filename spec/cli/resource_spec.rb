@@ -70,6 +70,17 @@ describe Resource do
         "Deleting current resource for test2.js"
       ]
     end
+
+    specify 'when --name is specified, it only uploads that file to the Apigee server' do
+      resource = Resource.new([], folder: File.expand_path('../fixtures', __dir__), name: 'test.js')
+      resource.shell = ShellRecorder.new
+      allow_any_instance_of(ApigeeCli::ResourceFile).to receive(:upload).and_return(:new_file)
+
+      resource.invoke(:upload)
+
+      expect(resource.shell.printed).to_not include 'Creating resource for test.txt'
+      expect(resource.shell.printed).to eq ["Creating resource for test.js"]
+    end
   end
 
   describe 'apigee resource delete' do
