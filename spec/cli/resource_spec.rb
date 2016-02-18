@@ -78,7 +78,6 @@ describe Resource do
 
       resource.invoke(:upload)
 
-      expect(resource.shell.printed).to_not include 'Creating resource for test.txt'
       expect(resource.shell.printed).to eq ["Creating resource for test.js"]
     end
   end
