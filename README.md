@@ -139,6 +139,9 @@ C. Resource Files on Apigee Server
     # Upload resource files from resource_folder
     $ apigee resource upload --folder=jsc
 
+    # Upload specific resource file from resource folder
+    $ apigee resource upload --folder=jsc --name=testing.js
+
 #### apigee resource delete
 
     # Delete resource file of resource_name

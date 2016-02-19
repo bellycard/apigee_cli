@@ -21,10 +21,16 @@ class Resource < ThorCli
 
   desc 'upload', 'Upload resource files'
   option :folder, type: :string, required: true
+  option :name, type: :string
   def upload
     folder = options[:folder]
+    name = options[:name]
 
-    files = Dir.entries(folder).select{ |f| f =~ /.js$/ }
+    if name
+      files = Dir.entries(folder).select{ |f| f =~ /#{name}$/ }
+    else
+      files = Dir.entries(folder).select{ |f| f =~ /.js$/ }
+    end
 
     resource = ApigeeCli::ResourceFile.new(environment)
 
